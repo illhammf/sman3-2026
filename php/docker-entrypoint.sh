@@ -217,8 +217,8 @@ echo "🚀 Running project:init..."
 php artisan project:init || true
 
 # Step 9: Create storage symbolic link
-echo "🔗 Creating storage link..."
-php artisan storage:link || true
+# echo "🔗 Creating storage link..."
+# php artisan storage:link || true
 
 # Step 10: Start cron
 echo "🕒 Starting cron service..."
