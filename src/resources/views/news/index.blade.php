@@ -4,34 +4,34 @@
 
 @section('content')
     {{-- Hero Sub-header --}}
-    <section class="relative pt-32 pb-16 bg-gradient-to-r from-blue-900 to-blue-800">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <section class="relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-12 lg:pb-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                    @if(isset($category))
-                        Berita - {{ $category->name }}
-                    @else
-                        Berita
-                    @endif
-                </h1>
-                <nav class="flex justify-center text-sm text-blue-200" aria-label="Breadcrumb">
-                    <ol class="flex items-center space-x-2">
-                        <li>
-                            <a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <span class="text-white">Berita</span>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+            <nav class="flex mb-6 text-xs sm:text-sm text-blue-200" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center flex-wrap gap-y-1">
+                    <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
+                    <li><span class="mx-2">/</span></li>
+                    <li class="text-white font-medium">
+                        @if(isset($category))
+                            {{ $category->name }}
+                        @else
+                            Berita
+                        @endif
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-3">
+                @if(isset($category))
+                    Berita - {{ $category->name }}
+                @else
+                    Berita
+                @endif
+            </h1>
+            <p class="text-sm sm:text-base text-blue-100/80 max-w-2xl">Informasi terbaru dari SMA Negeri 3 Kabupaten Tangerang</p>
         </div>
     </section>
 
     {{-- Content --}}
-    <section class="py-12 sm:py-16 bg-gray-50">
+    <section class="py-8 sm:py-10 lg:py-12 bg-gray-50 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-10">
                 {{-- Main Content --}}

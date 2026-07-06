@@ -6,30 +6,23 @@
 
 @section('content')
     {{-- Hero Sub-header --}}
-    <section class="relative pt-32 pb-16 bg-gradient-to-r from-blue-900 to-blue-800">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <section class="relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-12 lg:pb-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <nav class="flex justify-center text-sm text-blue-200 mb-4" aria-label="Breadcrumb">
-                    <ol class="flex items-center space-x-2">
-                        <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
-                        <li class="flex items-center">
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <a href="{{ url('/berita') }}" class="hover:text-white transition">Berita</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <span class="text-white">{{ $article->title }}</span>
-                        </li>
-                    </ol>
-                </nav>
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">{{ $article->title }}</h1>
-            </div>
+            <nav class="flex mb-6 text-xs sm:text-sm text-blue-200" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center flex-wrap gap-y-1">
+                    <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
+                    <li><span class="mx-2">/</span></li>
+                    <li><a href="{{ url('/berita') }}" class="hover:text-white transition">Berita</a></li>
+                    <li><span class="mx-2">/</span></li>
+                    <li class="text-white font-medium">{{ $article->title }}</li>
+                </ol>
+            </nav>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-3">{{ $article->title }}</h1>
         </div>
     </section>
 
     {{-- Content --}}
-    <section class="py-12 sm:py-16 bg-gray-50">
+    <section class="py-8 sm:py-10 lg:py-12 bg-gray-50 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-10">
                 {{-- Main Article --}}

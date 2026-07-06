@@ -3,24 +3,21 @@
 @section('title', 'Kontak')
 
 @section('content')
-<div class="relative bg-gradient-to-br from-blue-600 to-blue-800">
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute inset-0 bg-black/30"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <nav class="flex mb-4 text-sm text-blue-100" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-2">
+<section class="relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-12 lg:pb-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex mb-6 text-xs sm:text-sm text-blue-200" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center flex-wrap gap-y-1">
                 <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
                 <li><span class="mx-2">/</span></li>
                 <li class="text-white font-medium">Kontak</li>
             </ol>
         </nav>
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Kontak</h1>
-        <p class="text-xl text-blue-100 max-w-2xl">Hubungi kami untuk informasi lebih lanjut</p>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-3">Kontak</h1>
+        <p class="text-sm sm:text-base text-blue-100/80 max-w-2xl">Hubungi kami untuk informasi lebih lanjut</p>
     </div>
-</div>
+</section>
 
-<section class="py-16 bg-gray-50">
+<section class="py-8 sm:py-10 lg:py-12 bg-gray-50 reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2">
@@ -160,7 +157,7 @@
     </div>
 </section>
 
-<section class="py-12 bg-white">
+<section class="py-8 sm:py-10 lg:py-12 bg-white reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Lokasi Kami</h2>
         <div class="rounded-2xl overflow-hidden shadow-md">

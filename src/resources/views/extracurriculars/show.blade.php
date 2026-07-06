@@ -3,16 +3,23 @@
 @section('title', $extracurricular->name)
 
 @section('content')
-<div class="bg-gradient-to-r from-blue-600 to-blue-800 py-16">
-    <div class="max-w-7xl mx-auto px-4">
-        <a href="{{ route('extracurriculars.index') }}" class="inline-flex items-center text-blue-200 hover:text-white transition-colors mb-4">
-            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Ekstrakurikuler
-        </a>
-        <h1 class="text-3xl font-bold text-white">{{ $extracurricular->name }}</h1>
+<section class="relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-12 lg:pb-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex mb-6 text-xs sm:text-sm text-blue-200" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center flex-wrap gap-y-1">
+                <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
+                <li><span class="mx-2">/</span></li>
+                <li><a href="{{ route('extracurriculars.index') }}" class="hover:text-white transition">Ekstrakurikuler</a></li>
+                <li><span class="mx-2">/</span></li>
+                <li class="text-white font-medium">{{ $extracurricular->name }}</li>
+            </ol>
+        </nav>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-3">{{ $extracurricular->name }}</h1>
     </div>
-</div>
+</section>
 
-<div class="max-w-7xl mx-auto px-4 py-12">
+<section class="py-8 sm:py-10 lg:py-12 bg-gray-50 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white rounded-xl shadow-md overflow-hidden">
         <div class="lg:flex">
             <div class="lg:w-1/3 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center p-12">
@@ -46,4 +53,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

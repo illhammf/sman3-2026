@@ -4,28 +4,21 @@
 
 @section('content')
     {{-- Hero Sub-header --}}
-    <section class="relative pt-32 pb-16 bg-gradient-to-r from-blue-900 to-blue-800">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <section class="relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-12 lg:pb-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">{{ $page->title }}</h1>
-                <nav class="flex justify-center text-sm text-blue-200" aria-label="Breadcrumb">
-                    <ol class="flex items-center space-x-2">
-                        <li>
-                            <a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <span class="text-white">{{ $page->title }}</span>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+            <nav class="flex mb-6 text-xs sm:text-sm text-blue-200" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center flex-wrap gap-y-1">
+                    <li><a href="{{ url('/') }}" class="hover:text-white transition">Beranda</a></li>
+                    <li><span class="mx-2">/</span></li>
+                    <li class="text-white font-medium">{{ $page->title }}</li>
+                </ol>
+            </nav>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-3">{{ $page->title }}</h1>
         </div>
     </section>
 
     {{-- Content --}}
-    <section class="py-12 sm:py-16 bg-white">
+    <section class="py-8 sm:py-10 lg:py-12 bg-white reveal">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             @if($page->featured_image)
                 <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">

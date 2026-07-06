@@ -143,13 +143,18 @@ class PPDBRegistrationResource extends Resource
                 Forms\Components\Section::make('Data Wali')
                     ->schema([
                         Forms\Components\TextInput::make('guardian_name')
-                            ->label('Nama Wali'),
+                            ->label('Nama Wali')
+                            ->columnSpanFull()
+                            ->disabled(),
                         Forms\Components\TextInput::make('guardian_education')
-                            ->label('Pendidikan Wali'),
+                            ->label('Pendidikan Wali')
+                            ->disabled(),
                         Forms\Components\TextInput::make('guardian_occupation')
-                            ->label('Pekerjaan Wali'),
+                            ->label('Pekerjaan Wali')
+                            ->disabled(),
                         Forms\Components\TextInput::make('guardian_phone')
-                            ->label('Nomor Telepon Wali'),
+                            ->label('Nomor Telepon Wali')
+                            ->disabled(),
                     ])
                     ->columns(2),
                 Forms\Components\Section::make('Dokumen')
