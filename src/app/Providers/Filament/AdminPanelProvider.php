@@ -53,6 +53,14 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
+                    ->label('Konten Website'),
+                NavigationGroup::make()
+                    ->label('Manajemen Sekolah'),
+                NavigationGroup::make()
+                    ->label('PPDB'),
+                NavigationGroup::make()
+                    ->label('Pengaturan'),
+                NavigationGroup::make()
                     ->label('Administration'),
             ])
             ->userMenuItems([
