@@ -1,3 +1,32 @@
+@php
+    $footerSettings = \App\Models\Setting::whereIn('key', [
+        'school_name', 'school_address', 'school_phone', 'school_email',
+        'school_vision', 'facebook_url', 'instagram_url', 'youtube_url',
+        'tiktok_url', 'twitter_url', 'school_village', 'school_district',
+        'school_city', 'school_province', 'school_postal_code',
+    ])->get()->keyBy('key');
+
+    $schoolName = $footerSettings->has('school_name') ? $footerSettings['school_name']->value : 'SMA Negeri 3 Kabupaten Tangerang';
+    $schoolVision = $footerSettings->has('school_vision') ? $footerSettings['school_vision']->value : 'Terwujudnya peserta didik yang beriman, bertakwa, berakhlak mulia, unggul dalam prestasi, berbudaya, dan berwawasan lingkungan.';
+    $address = $footerSettings->has('school_address') ? $footerSettings['school_address']->value : '';
+    $village = $footerSettings->has('school_village') ? $footerSettings['school_village']->value : '';
+    $district = $footerSettings->has('school_district') ? $footerSettings['school_district']->value : '';
+    $city = $footerSettings->has('school_city') ? $footerSettings['school_city']->value : 'Kabupaten Tangerang';
+    $province = $footerSettings->has('school_province') ? $footerSettings['school_province']->value : 'Banten';
+    $postalCode = $footerSettings->has('school_postal_code') ? $footerSettings['school_postal_code']->value : '';
+    $phone = $footerSettings->has('school_phone') ? $footerSettings['school_phone']->value : '';
+    $email = $footerSettings->has('school_email') ? $footerSettings['school_email']->value : '';
+
+    $facebook = $footerSettings->has('facebook_url') ? $footerSettings['facebook_url']->value : '#';
+    $instagram = $footerSettings->has('instagram_url') ? $footerSettings['instagram_url']->value : '#';
+    $youtube = $footerSettings->has('youtube_url') ? $footerSettings['youtube_url']->value : '#';
+    $tiktok = $footerSettings->has('tiktok_url') ? $footerSettings['tiktok_url']->value : '#';
+    $twitter = $footerSettings->has('twitter_url') ? $footerSettings['twitter_url']->value : '#';
+
+    $fullAddress = trim($address . ', ' . $village . ', ' . $district . ', ' . $city . ', ' . $province . ($postalCode ? ' ' . $postalCode : ''), ', ');
+    if ($fullAddress === $city) $fullAddress = 'Jl. Contoh No. 123, Kecamatan, ' . $city . ', ' . $province;
+@endphp
+
 <footer class="bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -7,12 +36,12 @@
                         SMAN 3
                     </div>
                     <div>
-                        <p class="font-bold text-lg">SMA NEGERI 3</p>
-                        <p class="text-sm text-gray-400">Kabupaten Tangerang</p>
+                        <p class="font-bold text-lg">{{ $schoolName }}</p>
+                        <p class="text-sm text-gray-400">{{ $city }}</p>
                     </div>
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Terwujudnya peserta didik yang beriman, bertakwa, berakhlak mulia, unggul dalam prestasi, berbudaya, dan berwawasan lingkungan.
+                    {{ $schoolVision }}
                 </p>
             </div>
 
@@ -45,30 +74,47 @@
                 <ul class="space-y-3 text-sm text-gray-400">
                     <li class="flex items-start space-x-2">
                         <i class="fas fa-map-marker-alt mt-1 text-blue-400"></i>
-                        <span>Jl. Contoh No. 123, Kecamatan, Kabupaten Tangerang, Banten</span>
+                        <span>{{ $fullAddress }}</span>
                     </li>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-phone text-blue-400"></i>
-                        <span>(021) 1234-5678</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-envelope text-blue-400"></i>
-                        <span>info@sman3kabtangerang.sch.id</span>
-                    </li>
+                    @if($phone)
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-blue-400"></i>
+                            <span>{{ $phone }}</span>
+                        </li>
+                    @endif
+                    @if($email)
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-blue-400"></i>
+                            <span>{{ $email }}</span>
+                        </li>
+                    @endif
                 </ul>
                 <div class="flex space-x-3 mt-4">
-                    <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-full flex items-center justify-center transition">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center transition">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-400 rounded-full flex items-center justify-center transition">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+                    @if($facebook && $facebook !== '#')
+                        <a href="{{ $facebook }}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    @endif
+                    @if($instagram && $instagram !== '#')
+                        <a href="{{ $instagram }}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    @endif
+                    @if($youtube && $youtube !== '#')
+                        <a href="{{ $youtube }}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    @endif
+                    @if($tiktok && $tiktok !== '#')
+                        <a href="{{ $tiktok }}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-blue-400 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    @endif
+                    @if($twitter && $twitter !== '#')
+                        <a href="{{ $twitter }}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-blue-400 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -76,7 +122,7 @@
     <div class="border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <p class="text-center text-sm text-gray-500">
-                &copy; {{ date('Y') }} SMA Negeri 3 Kabupaten Tangerang. All rights reserved.
+                &copy; {{ date('Y') }} {{ $schoolName }}. All rights reserved.
             </p>
         </div>
     </div>

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             StaffSeeder::class,
             ExtracurricularSeeder::class,
             FacilitySeeder::class,
+            SuperiorityFeatureSeeder::class,
         ]);
     }
 }

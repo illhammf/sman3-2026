@@ -7,6 +7,8 @@ use App\Models\News;
 use App\Models\Achievement;
 use App\Models\Announcement;
 use App\Models\AcademicEvent;
+use App\Models\SuperiorityFeature;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -21,7 +23,17 @@ class HomeController extends Controller
             ->orderBy('start_date')
             ->take(5)
             ->get();
+        $superiorityFeatures = SuperiorityFeature::active()->orderBy('sort_order')->get();
 
-        return view('home.index', compact('sliders', 'news', 'achievements', 'announcements', 'upcomingEvents'));
+        $settings = Setting::whereIn('key', [
+            'school_name', 'school_address', 'school_phone', 'school_email',
+            'school_vision', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url',
+            'twitter_url', 'ppdb_is_open',
+        ])->get()->keyBy('key');
+
+        return view('home.index', compact(
+            'sliders', 'news', 'achievements', 'announcements', 'upcomingEvents',
+            'superiorityFeatures', 'settings'
+        ));
     }
 }
